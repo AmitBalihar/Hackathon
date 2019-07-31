@@ -1,0 +1,6 @@
+Source: https://console.cloud.google.com/functions/list?project=hackathon-av
+function-get-customer-receipt ver 95
+function-get-receipt ver 38
+function-insert-receipt ver 75
+function-pay ver 49
+function-update-receipt ver 9
