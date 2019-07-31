@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en"><head>
 	<link id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -5,29 +7,38 @@
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<style>
-		p {font-size:40%;}
+		p {font-size:60%;}
 		h1 {font-size:360%;}
 		th {font-size:180%;}
 		tr {font-size:150%;}
     #container {  margin: 0 auto; }
     #content {  padding: 32px 45px 27px 45px; position: relative;}
     body.small #container { background: #CAC8CF;  border: 1px solid #e7e5e0; border-radius: 16px}
-    body.login #container { width: 400px; }
+    body.login #container { width: 90%; }
     #header.wrapper { position: relative;}
     body.small.wrapper { width: auto; }
     body.small #header #logo { padding-top: 40px; padding-bottom: 20px;}
-    input.public-button { border: 1px solid #a2a2a2; border-radius: 5px; font-size: 50%; padding: 10px 16px 10px 16px; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
-    p.usernameLabel { font-size: 50%; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
-    p.passwordLabel { font-size: 50%; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
+    input.public-button { border: 1px solid #a2a2a2; border-radius: 5px; font-size: 120%; padding: 10px 16px 10px 16px; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
+    p.usernameLabel { font-size: 80%; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
+    p.passwordLabel { font-size: 80%; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
     input.inputtext {border-radius: 3px; border: 1px solid #aaa; }
-    
+    input[type=checkbox]
+	{
+	  /* Double-sized Checkboxes */
+	  -ms-transform: scale(2); /* IE */
+	  -moz-transform: scale(2); /* FF */
+	  -webkit-transform: scale(2); /* Safari and Chrome */
+	  -o-transform: scale(2); /* Opera */
+	  transform: scale(2);
+	  padding: 10px;
+	}
 	</style>
 </head>
-<body class="small login" id="pagebody" style="margin: 10px; text-align: center; font-size: 16px; background-color:#54B948">	
+<body class="small login" id="pagebody" style="margin: 10px; text-align: center; font-size: 28px; background-color:#54B948">	
 	<div id="header">
 		<div class="wrapper">
     <div id="logo">
-			<img src="https://storage.googleapis.com/hackathon-av-bucket1/NcrPay.png">
+			<img src="https://storage.googleapis.com/hackathon-av-bucket1/NcrPay.png" style="width:25%">
 		</div>
     </div>
     <div id="container">
