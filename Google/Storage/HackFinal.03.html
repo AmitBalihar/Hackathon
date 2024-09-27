@@ -1,0 +1,85 @@
+
+
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<style>
+		p {font-size:130%;}
+		h1 {font-size:360%;}
+		th {font-size:180%;}
+		tr {font-size:150%;}
+    input.tipButton { padding-right: 30px; padding-left: 30px; padding-top: 10px; padding-bottom: 10px ; margin-right: 30px; border-radius: 6px; border: 2px solid #00ffff; }
+	#overlay {
+	  position: fixed; /* Sit on top of the page content */
+	  width: 100%; /* Full width (cover the whole page) */
+	  height: 100%; /* Full height (cover the whole page) */
+	  top: 0; 
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  background: url(https://storage.googleapis.com/hackathon-av-bucket1/paid.jpg);
+	  background-repeat: no-repeat;
+	  background-size: 80%;
+	  /*background-color: rgba(0,0,0,0.5); Black background with opacity */
+	  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+	  opacity: 0.12;
+	  cursor: pointer; /* Add a pointer on hover */
+	  background-position-x: center;
+	}
+	</style>
+</head>
+<body style="font-size:16px;" id="pagebody">
+	<script type="text/javascript">
+		var $initialAmount = 0.0;
+		$(document).ready(function () {
+			if (window.location.search == '') {
+				alert('Missing query string values.');
+				return;
+			}
+			var url = 'https://glenncuevas-eval-test.apigee.net/getcustomerreceipt' + window.location.search;
+			$.get(url, function (list) {
+				$('#pagebody').html(list); // show the list
+
+				const $source = document.querySelector('#tip');
+				const $result = document.querySelector('#total');
+				$total = Number($result.innerHTML.replace(/[^0-9.-]+/g, ""));
+				$initialAmount = $total;
+
+				const typeHandler = function (e) {
+					$result.innerHTML = "$" + (Number(e.target.value) + Number($total)).toFixed(2);
+				}
+
+				$source.addEventListener('input', typeHandler) // register for oninput
+				$source.addEventListener('propertychange', typeHandler) // for IE8
+			});
+		});
+		function payFunction() {
+			var url = 'https://storage.googleapis.com/hackathon-av-bucket1/Login.html?';// + window.location.search;
+			var payText = document.querySelector('#total');
+			var tipText = document.querySelector('#tip');
+			var payTotal = Number(payText.innerHTML.replace(/[^0-9.-]+/g, ""));
+			var tipAmount = Number(tipText.value.replace(/[^0-9.-]+/g, ""));
+			var originalAmount = payTotal - tipAmount;
+			var qs = new URL(window.location);
+			url += "co=" + qs.searchParams.get("co");
+			url += "&st=" + qs.searchParams.get("st");
+			url += "&ta=" + qs.searchParams.get("ta");
+			url += '&tipAmt=' + tipAmount + '&totalAmt=' + payTotal;
+			window.location.href = url;
+			//window.location.replace(url);
+		}
+		function tip(percent) {
+			var payText = document.querySelector('#total');
+			var tipAmount = $initialAmount * percent;
+			var tipText = document.querySelector('#tip');
+			tipText.value = tipAmount.toFixed(2);
+			payText.innerHTML = "$" + ($initialAmount + tipAmount).toFixed(2);
+		}
+		
+	</script>
+</body>
+</html>

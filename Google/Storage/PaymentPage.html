@@ -1,0 +1,64 @@
+<html lang="en"><head>
+	<link id="bootstrap-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<style>
+		p {font-size:40%;}
+		h1 {font-size:360%;}
+		th {font-size:10%;}
+		tr {font-size:150%;}
+    #container {  margin: 0 auto; }
+    #content {  padding: 32px 45px 27px 45px; position: relative;}
+    body.small #container { background: #CAC8CF;  border: 1px solid #e7e5e0; border-radius: 16px}
+    body.login #container { width: 700px; }
+    #header.wrapper { position: relative;}
+    body.small.wrapper { width: auto; }
+    body.small #header #logo { padding-top: 40px; padding-bottom: 20px;}
+    input.public-button { border: 1px solid #a2a2a2; border-radius: 5px; font-size: 70%; padding: 10px 16px 10px 16px; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
+    p.cardNumber { font-size: 50%; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
+    p.expiryDate { padding-top: 10px; font-size: 50%; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
+    p.securityCode { padding-top: 10px; font-size: 50%; font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;}
+    input.inputtext { font-size: 100%; border-radius: 3px; border: 1px solid #aaa; }
+    
+	</style>
+</head>
+<body class="small login" id="pagebody" style="margin: 10px; text-align: center; font-size: 16px; background-color:#54B948">	
+	<div id="header">
+		<div class="wrapper">
+    <div id="logo">
+			<img src="https://storage.cloud.google.com/hackathon-av-bucket1/NcrPay1.png">
+		</div>
+    </div>
+    <div id="container">
+    <div id="content">
+    <table class="login">
+						<tbody style="width: 100px">
+            <tr>
+							<td colspan=2><p class="cardNumber"><strong><label for="cardNumber">Card Number</label></strong></p><input name="CardNumber" id="CardNumber" tabindex="1" class="inputtext" type="text" onblur="if(this.value!=''){ this.style.color='#000'; }" type="text" placeholder="Card Number" value="" data-val-required="Your card number is invalid." data-val-length-min="1" data-val-length-max="250" data-val-length="Your card number is invalid." data-val="true"></td>
+						</tr>
+            <tr >
+							<td><p class="expiryDate"><strong><label for="month">Expiry Month</label></strong></p>
+                  <input name="Month" tabindex="2" class="inputtext" id="Month" type="text" onblur="if(this.value!=''){ this.style.color='#000'; }" placeholder="Month" value="" data-val-required="Your card expiry year is invalid." data-val-length-min="1" data-val-length-max="250" data-val-length="Your card expiry month is invalid." data-val="true"></td>
+              <td><p class="expiryDate"><strong><label for="year">Expiry Year</label></strong></p>
+                <input name="Year" tabindex="3" class="inputtext" id="Year" type="text" onblur="if(this.value!=''){ this.style.color='#000';  }" type="text" placeholder="Year" value="" data-val-required="Your card expiry year is invalid." data-val-length-min="1" data-val-length-max="250" data-val-length="Your card expiry year is invalid." data-val="true"></td>    
+						</tr>
+						
+						<tr>
+							<td><p class="securityCode"><strong><label for="securityCode">Security Code</label></strong></p><input name="securityCode" id="securityCode" tabindex="1" class="inputtext" type="text" onblur="if(this.value!=''){ this.style.color='#000';}" type="password" placeholder="Security Code" value="" data-val-required="Your security code is invalid." data-val-length-min="1" data-val-length-max="250" data-val-length="Your security code is invalid." data-val="true"></td>
+						</tr>
+            
+						
+						<tr>
+							<td style="padding-top: 20px;"><input tabindex="5" class="public-button" type="submit" value="Pay" id="loginButton" onclick="login();"></td>
+						</tr>
+					</tbody></table>
+    </div>
+    </div>
+	<script>
+		function login() {
+			var url = 'http://glenncuevas-eval-test.apigee.net/pay' + window.location.search;
+			window.location.href = url;
+		}
+	</script>
+</body></html>
